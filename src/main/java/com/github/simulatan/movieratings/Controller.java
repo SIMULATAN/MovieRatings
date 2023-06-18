@@ -2,6 +2,7 @@ package com.github.simulatan.movieratings;
 
 import com.github.simulatan.movieratings.model.MovieRating;
 import com.github.simulatan.movieratings.model.MovieRepository;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -110,6 +111,6 @@ public class Controller {
 	}
 
 	private void refreshFilters() {
-		this.movieRatings.setPredicate(movieRating -> movieRating.getYear() >= sldYearFilter.getValue());
+		Platform.runLater(() -> this.movieRatings.setPredicate(movieRating -> movieRating.getYear() >= sldYearFilter.getValue()));
 	}
 }
